@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "detailorder";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activeor{
+    active
+}
+@section title{
+    Chi tiết đơn hàng
+}
+<div class="content" ng-controller="OrderCtrl">
+    <div class="container-fluid" ng-init="LoadDetailOrder()">
+        <div class="navbar-wrapper" style="margin-left:15px;">
+            <a class="navbar-brand" href="">CHI TIẾT ĐƠN HÀNG</a>
+        </div>
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class=" text-primary">
+                            <th>
+                                STT
+                            </th>
+
+                            <th>
+                                Điện Thoại
+                            </th>
+                            <th>
+                                Số Lượng
+                            </th>
+                            <th>
+                                Giá
+                            </th>
+                            <th>
+                                Thành Tiền
+                            </th>
+                            <th style="text-align: center;">
+                                <em class="fa fa-cog">
+                            </th>
+                            </thead>
+                            <tbody>
+
+                                <tr dir-paginate="or in listdtorder|itemsPerPage:5">
+                                    <td>{{$index +1}}</td>       
+                                    <td>
+                                        {{or.maCamera}}
+                                    </td>
+                                    <td>
+                                        {{or.soLuong}}
+                                    </td>
+                                    <td>
+                                        <p style="font-weight: bold;color: red;margin-top:15px;">{{or.donGia}}</p>
+                                    </td>
+                                    <td>
+                                        <p style="font-weight: bold;color: red;margin-top:15px;margin-left:15px;">{{or.donGia*or.soLuong}}</p>
+                                    </td>
+                                    <td>
+                                        <a title="Back" class="btn btn-sm btn-danger" href="/Order/order">
+                                            <em style="color: #FFFFFF;" class="fa fa-arrow-left "></em>
+                                        </a>
+                                        <a title="Cập nhật chi tiết đơn hàng" class="btn btn-sm btn-default" ng-click="UpdateDetail(or.id,or.so_luong)" href="">
+                                            <em style="color: #FFFFFF;" class="fa fa-edit"></em>
+                                        </a>
+
+                                        <a ng-click="DeleteOrderDetail(or.maChiTietDonHang)" class="btn btn-sm btn-danger" href="">
+                                            <em style="color: #FFFFFF;" class="fa fa-trash"></em>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

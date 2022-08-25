@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh Mục </span>
+                    </div>
+                    <ul>
+                        <li ng-repeat="lsp in listloaidt">
+                            <a href="#" ng-click="GetProductCate(lsp.id)">{{lsp.category_name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="Nhập từ khoá cầ tìm kiếm">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+84.3743.143.46</h5>
+
+                            <span>Hỗ Trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container-fluid">
+    <img style="height:250px;width:100%;" src="~/Content/home/img/sunlight-black-sunset-sea-cityscape-bay-150562-wallhere.com.png" />
+    <div class="text-center">
+        <h2>Giỏ Hàng </h2><br>
+    </div>
+</div>
+<div class="container shoping-cart spad" ng-controller="CartCtrl" ng-init="LoadCart()">
+    <div class="row">
+        <table class="col-lg-12 shoping__cart__table cart_info">
+            <thead class="update_cart">
+                <tr>
+                    <th>STT</th>
+                    <th colspan="2">Ảnh</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th>Xóa</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in cart">
+                    <td>
+                        <p style="margin-top: 25px;">
+                            {{$index+1}}
+                        </p>
+                    </td>
+                    <td>
+                        <img width="75px" height="75px" src="~/Content/Asset/images/{{c.hinhAnh}}"style="margin-top: 0px;">
+                    </td>
+                    <td>
+                        <p style="margin-top: 25px;">
+                            {{c.tenCamera}}
+                        </p>
+                    </td>
+                    <td>
+                        <p style="margin-top: 25px; color:#bf081f;font-weight: bold; margin-left: 45px;">
+                            {{c.gia | number : value=""}}
+                        </p>
+                    </td>
+                    <td>
+                        <div style="margin-top: 20px;">
+                            <a href="" ng-click="DownSL(c.id)" type="button" class="btn btn-default">
+                                -
+                            </a>
+                            <span style="font-weight: bold;">{{c.soLuong}}</span>
+                            <a href="" ng-click="UpSL(c.id)" type="button" class="btn btn-default">
+                                +
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <p style="margin-top: 25px;color:#bf081f;font-weight: bold; margin-left: 25px;">
+                            {{c.soLuong*c.gia | number : value=""}}
+                        </p>
+                    </td>
+                    <td>
+                        <a href="" ng-click="DeleteCart(c.id)" class="btn btn-sm btn-danger" style="margin-top: 20px;">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="shoping__cart__btns">
+                <a href="/VIEW/HOME/index.html" class="primary-btn cart-btn cart-btn-right">Tiếp Tục Mua Sắm</a>
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="shoping__continue">
+                <div class="shoping__discount">
+                    <h5>Mã Giảm Giá</h5>
+                    <form action="#">
+                        <input type="text" placeholder="Nhập Phiếu Mã Giảm Giá Của Bạn">
+                        <button type="submit" class="site-btn">Áp Dụng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="shoping__checkout">
+                <h5>Cart Total</h5>
+                <ul>
+                    <li>Vận Chuyển <span>Free Ship</span></li>
+                    <li>Tổng Giá <span>{{tongTien | number : value=""}}</span></li>
+
+                </ul>
+                <button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModalLong">Thanh toán</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <form action="" method="post">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="padding:40px;">
+                        <div>
+                            <h4>THÔNG TIN KHÁCH HÀNG</h4>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <input required placeholder="Họ và Tên" ng-model="donhang.tenKhachHang" class="form-control" type="text" name="fullname">
+                        </div>
+                        <div class="form-group">
+                            <input required placeholder="Số điện thoại" ng-model="donhang.sdt" class="form-control" type="text" name="sdt">
+                        </div>
+                        <div class="form-group">
+
+                            <input required="" ng-model="donhang.diaChi" placeholder="Địa chỉ" class="form-control" type="text" name="diachi">
+                        </div>
+                        <div class="form-group">
+
+                            <input required="" ng-model="donhang.ghiChu" placeholder="Ghi Chú" class="form-control" type="text" name="diachi">
+                        </div>
+                        
+                        @*<div class="form-group">
+
+            <input ng-model="order.ask" placeholder="Yêu cầu khác (không bắt buộc)" class="form-control" type="text" name="yc">
+        </div>*@
+                    </div>
+                    <div class="modal-footer">
+                        <div class="text-left" style="margin-right: 150px;">
+                            Tổng Tiền: {{tongTien | number : value=""}}
+                        </div>                          
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <input ng-click="Check_out(donhang)" type="button" class="btn btn-primary" value="Đặt hàng">
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

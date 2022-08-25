@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activepr{
+    active
+}
+@section title{
+    Sửa Sản Phẩm
+}
+<div class="content" style="background: #FFFFFF;" ng-controller="ProductCtrl" ng-init="LoadProductByID()">
+    <div class="container-fluid" ng-repeat="p in pro">
+        <div class="col-lg-8 card-body" style="margin-left: 210px;">
+            <h4 style="text-align:center;">SỬA SẢN PHẨM</h4>
+            <div class="form-horizontal" title="Tên Sản Phẩm">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Tên Sản Phẩm:" ng-model="p.tenCamera" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="ẢNH">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input type="file" ng-model="p.hinhAnh" ngf-select="UploadFiles($files,'Anh')" class="form-control">
+                </div>
+            </div>
+            <br>
+
+            <br>
+            <div class="form-horizontal" title="Số Lượng">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Số Lượng:" type="number" ng-model="p.soLuong" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Giá">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Giá:" type="number" ng-model="p.gia" class="form-control">
+                </div>
+            </div>
+            <br>
+
+            <div class="form-horizontal" title="Độ Phân Giải">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Độ Phân Giải:" type="text" ng-model="p.doPhanGiai" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Chíp">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Chíp:" type="text" ng-model="p.chip" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Ống Kính">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Ống Kính:" type="text" ng-model="p.ongKinh" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Tầm Quan Sát">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Tầm Quan Sát:" type="text" ng-model="p.tamQuanSat" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Nguồn Điện">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Nguồn Điện:" type="text" ng-model="p.nguonDien" class="form-control">
+                </div>
+            </div>
+
+            <br>
+
+
+            <div class="form-horizontal">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input ng-click="SaveProduct(p)" value="Sửa" type="button" class="btn btn-sm btn-success">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

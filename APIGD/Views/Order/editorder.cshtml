@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "editorder";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activeor{
+    active
+}
+@section title{
+    Cập nhập đơn hàng
+}
+<div class="content" style="background: #FFFFFF;" ng-controller="OrderCtrl" ng-init="LoadOrderByID()">
+    <div class="container-fluid" ng-repeat="p in dataedit">
+        <div class="col-lg-8 card-body" style="margin-left: 210px;">
+            <h4 style="text-align:center;">SỬA ĐƠN HÀNG</h4>
+            <div class="form-horizontal" title="Tên Khách Hàng">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Tên Người Đặt:" ng-model="p.tenKhachHang" type="text" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Số Điện Thoại">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input type="text" ng-model="p.sdt" placeholder="Số Điện Thoại:" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Địa Chỉ">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input type="text" ng-model="p.diaChi" placeholder="Địa Chỉ:" class="form-control">
+                </div>
+            </div>
+            <br>
+            
+            <div class="form-horizontal" title="Yêu Cầu">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Yêu Cầu Khác:" type="text" ng-model="p.ghiChu" class="form-control">
+                </div>
+            </div>
+            <br>
+            @*<div class="form-horizontal" title="Trạng Thái">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <select ng-model="p.trang_thai">
+                        <option value="1">Xác Thực</option>
+                        <option value="2">Đang Giao Hàng</option>
+                        <option value="3">Đã Giao Hàng</option>
+                        <option value="4">Hủy Đơn</option>
+                    </select>
+                </div>
+            </div>*@
+            <br>
+            <div class="form-horizontal">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input ng-click="UpdateOrder(p)" value="Sửa" type="button" class="btn btn-sm btn-success">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

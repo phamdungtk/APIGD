@@ -1,0 +1,47 @@
+﻿
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section active{
+    active
+}
+@section title{
+    Thêm loại sản phẩm
+}
+<div class="content" style="background: #FFFFFF;" ng-controller="CategoryCtrl">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 card-body" style="margin-left: 210px;">
+                <h3 style="text-align:center;">THÊM LOẠI SẢN PHẨM</h3>
+                <div class="form-horizontal" title="Tên hàng">
+                    <div class="col-lg-12 col-sm-12 col-md-12 form-group">
+                        <select name="slgrocery" style="width: 180px;" value="Hàng" ng-model="ct.maHang">
+                            <option value=""> ------- Loại Hàng ------- </option>
+                            <option ng-repeat="s in listmh" value="{{s.maHang}}">{{s.tenHang}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-horizontal" style="">
+                    <div class="col-lg-12 col-sm-12 col-md-12">
+                        <input type="text" name="category_name" ng-model="ct.tenLoai" class="form-control" placeholder="Nhập Tên Loại Sản Phẩm" required="">
+                    </div>
+                    <br>
+                    <div class="col-lg-12 col-sm-12 col-md-12">
+                        <input type="text" name="category_name" ng-model="ct.moTa" class="form-control" placeholder="Nhập Mô Tả" required="">
+                    </div>
+                </div>
+                <br>
+                <div class="form-inline">
+                    <div class="col-lg-12 col-sm-12 col-md-12">
+                        <input ng-click="AddCate(ct)" value="Thêm Loại Sản Phẩm" type="button" name="btn_addcategory" class=" btn btn-sm btn-success btn-create">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+</div>
+

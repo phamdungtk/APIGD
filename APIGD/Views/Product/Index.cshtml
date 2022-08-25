@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="hero hero-normal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="hero__categories">
+                    <div class="hero__categories__all">
+                        <i class="fa fa-bars"></i>
+                        <span>Danh Mục </span>
+                    </div>
+                    <ul>
+                        <li ng-repeat="lsp in listloaidt">
+                            <a href="#" ng-click="GetProductCate(lsp.id)">{{lsp.tenLoai}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="#">
+                            <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div>
+                            <input type="text" placeholder="Nhập từ khoá cầ tìm kiếm">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+84.3743.143.46</h5>
+
+                            <span>Hỗ Trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+<!-- Breadcrumb Section Begin -->
+<div class="container-fluid">
+    <img style="height:250px;width:100%;" src="~/Content/home/img/sunlight-black-sunset-sea-cityscape-bay-150562-wallhere.com.png" />
+    <div class="text-center">
+        <h2>Danh Sách Sản Phẩm</h2><br>
+    </div>
+</div>
+<!-- Breadcrumb Section End -->
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-5">
+                <div class="sidebar">
+                    <div class="sidebar__item">
+                        <h4>Department</h4>
+                        <ul>
+                            <li ng-repeat="lsp in listloaidt">
+                                <a href="#" ng-click="GetProductCate(lsp.maCamera)">{{lsp.tenLoai}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-7">
+
+                <div class="filter__item">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="filter__sort">
+                                <span>Sort By</span>
+                                <select>
+                                    <option value="0">Default</option>
+                                    <option value="0">Default</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="filter__found">
+                                <h6><span>16</span> Products found</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-3">
+                            <div class="filter__option">
+                                <span class="icon_grid-2x2"></span>
+                                <span class="icon_ul"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row featured__filter" ng-controller="ProCateCtrl" ng-init="LoadProductByCate()">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" dir-paginate="lpr in listprocate|itemsPerPage:8">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg">
+                                    <img src="~/Content/Asset/images/{{lpr.hinhAnh}}">                            
+                                </div>
+                                <div class="featured__item__text"ng-click="GetDetail(lpr.maCamera)"">
+                                    <h6><a href="">{{lpr.tenCamera}}</a></h6>
+                                    <h5>{{ lpr.gia | number : value=""}} vnđ</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="product__pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

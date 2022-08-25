@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activeor{
+    active
+}
+@section title{
+    Quản lý đơn hàng
+}
+<div class="content" ng-controller="OrderCtrl">
+    <div class="container-fluid">
+        <div class="navbar-wrapper" style="margin-left:15px;">
+            <a class="navbar-brand" href="javascript:;">DANH SÁCH ĐƠN HÀNG</a>
+        </div>
+        <div class="form-group" style="margin-left:15px;">
+            @*<select ng-change="GetorderST(t.trang_thai)" ng-model="t.trang_thai">
+                <option value="">Trạng Thái</option>
+                <option value="0">Đã Xác Nhận</option>
+                <option value="1">Đã Giao Hàng</option>
+                <option value="2">Đã Thanh Toán</option>
+                
+            </select>*@
+        </div>
+        <div class="row">
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class=" text-primary">
+                                <th>STT</th>
+                                <th>
+                                    Người Đặt
+                                </th>
+                                <th>
+                                    Số Điện Thoại
+                                </th>
+                                <th>
+                                    Địa Chỉ
+                                </th>
+                           
+                                <th>
+                                    Thành Tiền
+                                </th>
+                                <th>
+                                    Ngày Đặt
+                                </th>
+                                <th style="text-align: center;">
+                                    <em class="fa fa-cog">
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr dir-paginate="or in listorder|itemsPerPage:5">
+                                    <td>{{$index + 1}}</td>
+                                    <td>
+                                        {{or.tenKhachHang}}
+                                    </td>
+                                    <td>
+                                        {{or.sdt}}
+                                    </td>
+                                    <td>
+                                        {{or.diaChi}}
+                                    </td>
+                                    <td>
+                                        <p style="font-weight: bold;color: red;">{{or.tongTien}}</p>
+                                    </td>
+                                    <td>
+                                        {{or.ngayTao}}
+                                    </td>
+                                    @*<td>
+            <p style="font-weight: bold;margin-top:15px;" ng-if="or.trangThaiDonHang==0">
+                Đã Xác Nhận
+            </p>
+            <p style="font-weight: bold;margin-top:15px;" ng-if="or.trangThaiVanChuyen==1">
+                Đã Giao Hàng
+            </p>
+            <p style="font-weight: bold;margin-top:15px;" ng-if="or.trangThaiThanhToan==2">
+                Đã Thanh Toán
+            </p>
+
+        </td>*@
+                                    <td>
+                                        <a title="Xem chi tiết đơn hàng" ng-click="GetDetail(or.maDonHang)" class="btn btn-sm btn-warning" href="">
+                                            <em style="color: #FFFFFF;" class="fa fa-eye"></em>
+                                        </a>
+                                        <a title="Cập nhật đơn hàng" ng-click="EditOrder(or.maDonHang)" class="btn btn-sm btn-default" href="">
+                                            <em style="color: #FFFFFF;" class="fa fa-edit"></em>
+                                        </a>
+                                        <a ng-click="DeleteOrder(or.maDonHang)" class="btn btn-sm btn-danger" href="">
+                                            <em style="color: #FFFFFF;" class="fa fa-trash"></em>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-left">
+                        <dir-pagination-controls max-size="5"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

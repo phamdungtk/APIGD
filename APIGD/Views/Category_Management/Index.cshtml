@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@section active{
+    active
+}
+@section title{
+    Quản lý loại sản phẩm
+}
+<div class="content" ng-controller="CategoryCtrl">
+    <div class="container-fluid">
+        <div class="navbar-wrapper" style="margin-left: 80px;">
+            <a class="navbar-brand" href="javascript:;">Danh Sách Loại Sản Phẩm</a>
+        </div>
+        <div class="row">
+            <div class="col col-xs-6 text-left" style="margin-left: 80px;">
+                <a href="/Category_Management/AddCategory"><button type="button" style="height: 40px;" class="btn btn-sm btn-success btn-create">Thêm mới</button></a>
+            </div>
+            <div class="col-md-12" style="margin-left: 80px;">
+                <div class="card" style="width: 80%;">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class=" text-primary">
+                                <th>STT</th>
+                                <th>
+                                    Loại Sản Phẩm
+                                </th>
+                                <th>
+                                    Mã Hàng
+                                </th>
+
+                                <th>Mô tả</th>
+                                <th style="text-align: center;">
+                                    <em class="fa fa-cog">
+                                </th>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="lct in listloaisp|itemsPerPage:5">
+                                    <td>
+                                    {{$index+1}}
+                                    </td>
+                                    <td>
+                                    {{lct.tenLoai}}
+                                    </td>
+                                    <td>
+                                    {{lct.maHang}}
+                                    </td>
+                                    <td>
+                                    {{lct.moTa}}
+                                    </td>
+                                    <td align="center">
+                                    <a class="btn btn-sm btn-default" ng-click="UpdateCate(lct.maLoai)">
+                                    <em style="color: #FFFFFF;" class="fa fa-edit"></em>
+                                    </a>
+                                    <a ng-click="DeleteCate(lct.maLoai)" class="btn btn-sm btn-danger" href="">
+                                    <em style="color: #FFFFFF;" class="fa fa-trash"></em>
+                                    </a>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-left">
+                            <dir-pagination-controls max-size="5"
+                                                     direction-links="true"
+                                                     boundary-links="true">
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

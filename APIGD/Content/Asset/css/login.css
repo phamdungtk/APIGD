@@ -1,0 +1,19 @@
+.form-item{
+margin-bottom: 20px;
+}
+.btnlogin{
+line-height: 30px;
+}
+.form-background{
+background: #0099FF; height: 450px;
+}
+.section-login{
+margin-bottom: 100px;
+}
+body{
+background: #0099FF;
+}
+h3{
+padding-top: 20px;
+margin-bottom: 40px;
+}

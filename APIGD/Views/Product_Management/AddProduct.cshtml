@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activepr{
+    active
+}
+@section title{
+    Thêm sản phẩm
+}
+<div class="content" style="background: #FFFFFF;" ng-controller="ProductCtrl">
+    <div class="container-fluid">
+        <div class="col-lg-8 card-body" style="margin-left: 210px;">
+            <h4 style="text-align:center;">THÊM SẢN PHẨM</h4>
+            <div class="form-horizontal" title="Loại Sản Phẩm">
+                <div class="col-lg-12 col-sm-12 col-md-12 form-group">
+                    <select name="slgrocery" style="width: 180px;" value="Loại Sản Phẩm" ng-model="pr.maLoai">
+                        <option value=""> ------- Loại Sản Phẩm ------- </option>
+                        <option ng-repeat="s in listloaidt" value="{{s.maLoai}}">{{s.tenLoai}}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Tên Sản Phẩm">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Tên Sản Phẩm:" ng-model="pr.tenCamera" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="ẢNH">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input type="file" ng-model="pr.hinhAnh" multiple="multiple" ngf-select="UploadFiles($files,'Anh')" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Số Lượng">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Số Lượng:" type="number" ng-model="pr.soLuong" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Giá">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Giá:" type="number" ng-model="pr.gia" class="form-control">
+                </div>
+            </div>
+            <br>
+
+            <div class="form-horizontal" title="Độ Phân giải">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Độ Phân Giải:" ng-model="pr.doPhanGiai" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Chíp">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Chíp:" ng-model="pr.chip" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Ống Kính">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Ống Kính:" ng-model="pr.ongKinh" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Tầm Quan Sát">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Tầm Quan Sát:" ng-model="pr.tamQuanSat" type="text" name="namephone" class="form-control">
+                </div>
+            </div>
+            <br>
+            <div class="form-horizontal" title="Nguồn Điện">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Nguồn Điện:" ng-model="pr.nguonDien" type="text" name="namephone" class="form-control">
+                </div>
+
+            </div>
+            <br>
+            @*<div class="form-horizontal" title="Camera Hót">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input placeholder="Camera Hót:" ng-model="pr.cameraHot" type="text" name="namephone" class="form-control">
+                </div>
+
+            </div>*@
+
+            <br>
+            <div class="form-horizontal">
+                <div class="col-lg-12 col-sm-12 col-md-12">
+                    <input ng-click="AddProduct(pr)" value="Thêm" type="button" class="btn btn-sm btn-success">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

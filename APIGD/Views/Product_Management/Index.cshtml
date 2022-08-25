@@ -1,0 +1,117 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@section activepr{
+    active
+}
+@section title{
+    Quản lý Sản Phẩm
+}
+<div class="content" ng-controller="ProductCtrl">
+    <div class="container-fluid">
+        <div class="navbar-wrapper">
+            <a class="navbar-brand" href="javascript:;">Danh Sách Sản Phẩm</a>
+        </div>
+        <div class="row">
+            <div class="col col-xs-2 text-left">
+                <a href="/Product_Management/AddProduct" type="button" class="btn btn-sm btn-success btn-create" style="line-height: 30px;">Thêm mới</a>
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                <th>STT</th>
+                                <th>
+                                    Hình Ảnh
+                                </th>
+                                <th>
+                                    Tên Sản Phẩm
+                                </th>
+
+                                <th>
+                                    Độ Phân Giải
+                                </th>
+                                <th>
+                                    Chíp
+                                </th>
+                                <th>
+                                    Ổng Kính
+                                </th>
+                                <th>
+                                    Tầm Quan Sát
+                                </th>
+                                <th>
+                                    Nguồn Điện
+                                </th>
+                                <th>
+                                    Giá
+
+                                </th>
+                                <th>
+                                    Số Lượng
+                                </th>
+                                <th style="text-align: center;">
+                                    <em class="fa fa-cog">
+                                </th>
+                                </thead>
+                                <tbody>
+                                    <tr dir-paginate="lsp in listsp|itemsPerPage:5">
+                                        <td>
+                                            {{$index + 1}}
+                                        </td>
+                                        <td>
+                                            <img class="img-responsive" src="~/Content/Asset/images/{{lsp.hinhAnh}}" width="60px" height="60px">
+                                        </td>
+                                        <td>
+                                            {{lsp.tenCamera}}
+                                        </td>
+
+                                        <td>
+                                            <p style="font-weight: bold;color: red;margin-top:17px;">{{lsp.doPhanGiai}}</p>
+
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:35px;">{{lsp.chip}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:20px;">{{lsp.ongKinh}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:20px;">{{lsp.tamQuanSat}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:20px;">{{lsp.nguonDien}}</p>
+                                        </td>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:20px;">{{lsp.gia}}</p>
+                                        <td>
+                                            <p style="font-weight: bold;margin-top:17px;margin-left:20px;">{{lsp.soLuong}}</p>
+                                        </td>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-default" ng-click="UpdateProduct(lsp.maCamera)" href="">
+                                                <em style="color: #FFFFFF;" class="fa fa-edit"></em>
+                                            </a>
+                                            <a ng-click="DeleteProduct(lsp.maCamera)" class="btn btn-sm btn-danger" href="">
+                                                <em style="color: #FFFFFF;" class="fa fa-trash"></em>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <dir-pagination-controls max-size="5"
+                                                 direction-links="true"
+                                                 boundary-links="true">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
